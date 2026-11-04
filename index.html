@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Fix | Mantenimiento Preventivo y Correctivo de Cómputo (2026)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Playfair Display (estilo Redaction 50 / Serif Académico) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .font-redaction {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .bg-tech-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .bg-tech-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 12px 30px -8px rgba(37, 99, 235, 0.15);
+        }
+
+        .active-foda-tab {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+            border-color: #2563eb !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-600 selection:text-white bg-white text-slate-900">
+
+    <!-- Navbar Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-600 to-navy-900 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-blue-500/20">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <div>
+                    <span class="font-redaction text-2xl font-black tracking-wider text-navy-900 block leading-none">TECH FIX</span>
+                    <span class="text-[10px] text-blue-600 font-semibold tracking-widest uppercase">Mantenimiento de Cómputo • 2026</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold uppercase tracking-wider">
+                <a href="#inicio" class="text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
+                <a href="#equipo" class="text-slate-600 hover:text-blue-600 transition-colors">Equipo</a>
+                <a href="#horizonte" class="text-slate-600 hover:text-blue-600 transition-colors">Horizonte</a>
+                <a href="#nosotros" class="text-slate-600 hover:text-blue-600 transition-colors">Propuesta</a>
+                <a href="#objetivos" class="text-slate-600 hover:text-blue-600 transition-colors">Objetivos</a>
+                <a href="#marco" class="text-slate-600 hover:text-blue-600 transition-colors">Marco Teórico</a>
+                <a href="#foda" class="text-slate-600 hover:text-blue-600 transition-colors">FODA</a>
+                <a href="#cotizador" class="text-slate-600 hover:text-blue-600 transition-colors">Cotizador</a>
+                <a href="#creditos" class="text-slate-600 hover:text-blue-600 transition-colors">Bibliografía</a>
+            </nav>
+
+            <!-- Call to Action button -->
+            <a href="#cotizador" class="hidden sm:inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-navy-900 text-white font-semibold px-5 py-2.5 rounded-xl hover:opacity-95 transition-all shadow-md shadow-blue-600/20 text-sm">
+                <i class="fa-solid fa-calculator text-xs"></i>
+                <span>Diagnóstico Rápido</span>
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-700 hover:text-slate-900 p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 pt-3 pb-6 space-y-3">
+            <a href="#inicio" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Inicio</a>
+            <a href="#equipo" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Equipo Directivo</a>
+            <a href="#horizonte" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Horizonte Institucional</a>
+            <a href="#nosotros" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Propuesta de Negocio</a>
+            <a href="#objetivos" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Objetivos del Proyecto</a>
+            <a href="#marco" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Marco Teórico e Histórico</a>
+            <a href="#foda" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Matriz FODA</a>
+            <a href="#cotizador" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Cotizador de Servicios</a>
+            <a href="#creditos" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Referencias Bibliográficas</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-blue-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <!-- Academic Pill -->
+            <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm text-blue-800 font-medium shadow-sm">
+                <i class="fa-solid fa-graduation-cap text-blue-600"></i>
+                <span>I.E.D. Santa Inés — Proyecto de Emprendimiento 1002 (Silvania, 2026)</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="font-redaction text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-navy-900 mb-6">
+                TECH FIX
+            </h1>
+
+            <!-- Slogan Badge -->
+            <p class="font-serif text-2xl sm:text-3xl md:text-4xl text-blue-600 font-semibold italic mb-8">
+                “Seguridad continua, tranquilidad garantizada”
+            </p>
+
+            <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed mb-10 font-normal">
+                Servicios integrales de mantenimiento preventivo y correctivo de cómputo (hardware y software), integrando asistencia presencial calificada con soluciones digitales para maximizar la durabilidad de tus equipos informáticos.
+            </p>
+
+            <!-- Buttons CTA -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#cotizador" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-navy-900 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-blue-600/20 transition-all text-base flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Cotizar Diagnóstico</span>
+                </a>
+                <a href="#equipo" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-medium px-8 py-4 rounded-xl transition-all text-base flex items-center justify-center space-x-2 shadow-sm">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Conoce al Equipo</span>
+                </a>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
+                <div class="bg-white border border-slate-200 p-4 rounded-xl flex items-center space-x-3.5 shadow-sm">
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-lg"><i class="fa-solid fa-microchip text-xl"></i></div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900">Limpieza Física</h4>
+                        <p class="text-xs text-slate-500">Hardware y pasta térmica</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 p-4 rounded-xl flex items-center space-x-3.5 shadow-sm">
+                    <div class="p-3 bg-cyan-50 text-cyan-600 rounded-lg"><i class="fa-solid fa-bug-slash text-xl"></i></div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900">Desinfección</h4>
+                        <p class="text-xs text-slate-500">Antivirus y malware</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 p-4 rounded-xl flex items-center space-x-3.5 shadow-sm">
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg"><i class="fa-solid fa-video text-xl"></i></div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900">Guías Didácticas</h4>
+                        <p class="text-xs text-slate-500">Cápsulas explicativas</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 p-4 rounded-xl flex items-center space-x-3.5 shadow-sm">
+                    <div class="p-3 bg-teal-50 text-teal-600 rounded-lg"><i class="fa-solid fa-user-shield text-xl"></i></div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900">Soporte Continuo</h4>
+                        <p class="text-xs text-slate-500">Atención personalizada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo Organizacional / Directiva -->
+    <section id="equipo" class="py-20 bg-white relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Estructura Organizacional</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Equipo Directivo del Proyecto (2026)</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+                <p class="max-w-2xl mx-auto text-slate-600">
+                    Estudiantes al frente de la planificación, dirección técnica y ejecución operativa del proyecto Tech Fix en la I.E.D. Santa Inés.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- GERENTE GENERAL: María Paula Romero Rodríguez -->
+                <div class="bg-tech-card rounded-2xl p-6 text-center transition-all flex flex-col items-center">
+                    <div class="relative w-40 h-40 mb-5 rounded-full p-1 bg-gradient-to-tr from-blue-400 to-cyan-500 shadow-xl">
+                        <img src="https://i.imgur.com/hu9pdbV.jpeg" 
+                             alt="María Paula Romero Rodríguez - Gerente General Tech Fix" 
+                             class="w-full h-full object-cover rounded-full bg-white object-top"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400';">
+                    </div>
+                    <span class="inline-block px-3.5 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                        Gerente General
+                    </span>
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">María Paula Romero Rodríguez</h3>
+                    <p class="text-blue-600 font-medium text-xs mb-4">Dirección Estratégica & Liderazgo</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Responsable de la toma de decisiones generales, coordinación estratégica del emprendimiento, comunicación pública y aseguramiento de metas del servicio.
+                    </p>
+                </div>
+
+                <!-- SUBGERENTE: Maicol Andrés López Rusinque -->
+                <div class="bg-tech-card rounded-2xl p-6 text-center transition-all flex flex-col items-center">
+                    <div class="relative w-40 h-40 mb-5 rounded-full p-1 bg-gradient-to-tr from-blue-600 to-indigo-600 shadow-xl flex items-center justify-center bg-slate-50">
+                        <div class="w-full h-full rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                            <i class="fa-solid fa-user-tie text-6xl"></i>
+                        </div>
+                    </div>
+                    <span class="inline-block px-3.5 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                        Subgerente
+                    </span>
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">Maicol Andrés López Rusinque</h3>
+                    <p class="text-blue-600 font-medium text-xs mb-4">Gestión Operativa & Logística</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Encargado de la supervisión de operaciones técnicas presenciales, inventario de insumos de mantenimiento y respaldo de procesos técnicos.
+                    </p>
+                </div>
+
+                <!-- DESARROLLADOR: Jhonatan Camilo Marentes Jara -->
+                <div class="bg-tech-card rounded-2xl p-6 text-center transition-all flex flex-col items-center">
+                    <div class="relative w-40 h-40 mb-5 rounded-full p-1 bg-gradient-to-tr from-indigo-500 to-navy-900 shadow-xl flex items-center justify-center bg-slate-50">
+                        <div class="w-full h-full rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                            <i class="fa-solid fa-code text-6xl"></i>
+                        </div>
+                    </div>
+                    <span class="inline-block px-3.5 py-1 bg-indigo-100 text-indigo-800 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                        Desarrollador / Soporte
+                    </span>
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">Jhonatan Camilo Marentes Jara</h3>
+                    <p class="text-indigo-600 font-medium text-xs mb-4">Sistemas Digitales & Diagnóstico</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Líder del área tecnológica, desarrollo del portal interactivo, creación de guías multimedia e implementación de reparaciones de software.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Banner Docente Orientador -->
+            <div class="mt-12 bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-500 uppercase font-semibold">Docente Orientadora</span>
+                        <h4 class="text-base font-bold text-navy-900">María Nelly Triana Luna</h4>
+                        <p class="text-xs text-slate-600">Asignatura de Emprendimiento — Curso 1002</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        <i class="fa-solid fa-certificate mr-1.5 text-xs"></i> Proyecto Aprobado 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizonte Institucional (Misión, Visión, Valores) -->
+    <section id="horizonte" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Filosofía Empresarial</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Horizonte de la Idea</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Misión -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Misión</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Proporcionar servicios integrales de mantenimiento preventivo y correctivo de cómputo en Silvania, combinando asistencia presencial especializada y capacitación interactiva para asegurar la longevidad, eficiencia y seguridad del equipo informático de la comunidad.
+                    </p>
+                </div>
+
+                <!-- Visión -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 bg-cyan-100 text-cyan-700 rounded-xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Visión</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Consolidarnos para el año 2026 como la iniciativa líder de soporte informático estudiantil y comunitario en la región, reconocida por su transparencia, rigor técnico y contribución al aprendizaje tecnológico accesible.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Valores Corporativos -->
+            <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                <h3 class="text-lg font-bold text-navy-900 mb-6 text-center">Valores Corporativos</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <i class="fa-solid fa-shield-halved text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-bold text-sm text-navy-900">Transparencia</h4>
+                        <p class="text-xs text-slate-500 mt-1">Diagnósticos precisos y sin costos ocultos.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <i class="fa-solid fa-award text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-bold text-sm text-navy-900">Compromiso</h4>
+                        <p class="text-xs text-slate-500 mt-1">Dedicación constante hacia la satisfacción del cliente.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <i class="fa-solid fa-lightbulb text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-bold text-sm text-navy-900">Innovación</h4>
+                        <p class="text-xs text-slate-500 mt-1">Uso de herramientas avanzadas y contenido formativo.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <i class="fa-solid fa-handshake text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-bold text-sm text-navy-900">Responsabilidad</h4>
+                        <p class="text-xs text-slate-500 mt-1">Manejo seguro de información y componentes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuesta de Negocio / Planteamiento y Justificación -->
+    <section id="nosotros" class="py-20 bg-white border-t border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Fundamentación del Proyecto</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Planteamiento del Problema y Justificación</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Problema -->
+                <div class="bg-tech-card p-8 rounded-2xl border-l-4 border-l-rose-500">
+                    <h3 class="text-xl font-bold text-navy-900 mb-3 flex items-center space-x-2">
+                        <i class="fa-solid fa-triangle-exclamation text-rose-500"></i>
+                        <span>Planteamiento del Problema</span>
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Gran parte de los equipos de cómputo en el entorno educativo y local sufren de acumulación extrema de polvo, falta de cambio de crema disipadora y presencia de malware no detectado. Esto provoca sobrecalentamiento, lentitud drástica y fallas prematuras de hardware, resultando en pérdidas económicas y de productividad.
+                    </p>
+                </div>
+
+                <!-- Justificación -->
+                <div class="bg-tech-card p-8 rounded-2xl border-l-4 border-l-emerald-500">
+                    <h3 class="text-xl font-bold text-navy-900 mb-3 flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span>Justificación del Emprendimiento</span>
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Tech Fix nace como una solución accesible para extender la vida útil de los ordenadores mediante intervenciones técnico-preventivas periódicas. Al combinar el servicio físico con guías formativas, se fomenta la cultura digital de cuidado en Silvania, reduciendo el gasto recurrente en equipos nuevos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Servicios principales -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-tech-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Mantenimiento Integral</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Atención dual en Hardware (desarmado, limpieza profunda de ventiladores, cambio de pasta térmica) y Software (optimización del sistema, eliminación de archivos basura y virus).
+                    </p>
+                </div>
+
+                <div class="bg-tech-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-cyan-100 text-cyan-700 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-chalkboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Componente Educativo</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Publicación de cápsulas en video y guías digitales sencillas para que los usuarios aprendan hábitos preventivos de cuidado y eviten fallas por mal uso cotidiano.
+                    </p>
+                </div>
+
+                <div class="bg-tech-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Asistencia Presencial</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Acompañamiento personalizado directo para evaluar y reparar equipos de estudiantes, docentes y familias locales con total transparencia y rigurosidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section id="objetivos" class="py-20 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Metas Clave</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Objetivos del Proyecto</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Generales -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-blue-600">
+                    <h3 class="text-2xl font-bold text-navy-900 mb-6 flex items-center space-x-3">
+                        <i class="fa-solid fa-flag text-blue-600"></i>
+                        <span>Objetivo General</span>
+                    </h3>
+                    <p class="text-slate-700 text-sm leading-relaxed">
+                        Garantizar la continuidad operativa, estabilidad y óptimo rendimiento del parque informático mediante intervenciones técnico-preventivas y correctivas continuas (inspección física, refrigeración, parches de seguridad y eliminación de código malicioso) en la comunidad escolar y local.
+                    </p>
+                </div>
+
+                <!-- Específicos -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-indigo-600">
+                    <h3 class="text-2xl font-bold text-navy-900 mb-6 flex items-center space-x-3">
+                        <i class="fa-solid fa-list-check text-indigo-600"></i>
+                        <span>Objetivos Específicos</span>
+                    </h3>
+                    <ul class="space-y-4 text-slate-700 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-chevron-right text-indigo-600 mt-1"></i>
+                            <span>Establecer rutinas de inspección periódicas y metodologías estandarizadas para prolongar la vida útil de los ordenadores.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-chevron-right text-indigo-600 mt-1"></i>
+                            <span>Reducir los tiempos de inactividad técnica mediante diagnósticos oportunos y precisos de fallas en hardware o software.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-chevron-right text-indigo-600 mt-1"></i>
+                            <span>Capacitar a los usuarios mediante guías multimedia interactivas en buenas prácticas de seguridad informática y conservación preventiva.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marco Teórico e Histórico -->
+    <section id="marco" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Fundamentación Técnica</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Marco Teórico e Histórico</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900">Evolución Histórica</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        El mantenimiento informático ha evolucionado drásticamente desde los primeros grandes sistemas mainframe hasta la era de la computación personal y servicios en la nube:
+                    </p>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                        <li class="p-3 bg-white rounded-xl border border-slate-200">
+                            <strong>Mantenimiento Reactivo (Etapa Temprana):</strong> Se intervenía únicamente tras el fallo catastrófico e inminente del equipo.
+                        </li>
+                        <li class="p-3 bg-white rounded-xl border border-slate-200">
+                            <strong>Computación Personal (Décadas 80-90):</strong> Nace el mantenimiento preventivo programado para evitar la pérdida masiva de datos e interrupciones de trabajo.
+                        </li>
+                        <li class="p-3 bg-white rounded-xl border border-slate-200">
+                            <strong>Era Contemporánea (2026):</strong> Automatización de diagnósticos de software, desinfección preventiva en segundo plano y sustitución rápida de pastas térmicas avanzadas.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900">Conceptos Fundamentales</h3>
+                    </div>
+                    <div class="space-y-4 text-xs sm:text-sm">
+                        <div class="p-4 bg-white rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-navy-900 text-sm mb-1">Mantenimiento Preventivo</h4>
+                            <p class="text-slate-600">Acciones periódicas orientadas a evitar averías: remoción de suciedad, soplado de fuentes y disipadores, reemplazo de crema térmica, depuración de archivos temporales y actualización de drivers.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-navy-900 text-sm mb-1">Mantenimiento Correctivo</h4>
+                            <p class="text-slate-600">Intervenciones destinadas a corregir daños ya existentes: reparación o reemplazo de componentes averiados (RAM, discos SSD, fuentes de poder), formateo e instalación limpia de sistemas operativos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matriz FODA Interactiva -->
+    <section id="foda" class="py-20 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Diagnóstico Estratégico</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Matriz FODA Interactiva</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+                <p class="max-w-2xl mx-auto text-slate-600 text-sm sm:text-base">
+                    Explora los factores internos y externos del proyecto identificados en el documento técnico.
+                </p>
+            </div>
+
+            <!-- Filtros FODA -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterFoda('all')" id="tab-all" class="foda-tab active-foda-tab border border-slate-300 font-medium px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    Todos
+                </button>
+                <button onclick="filterFoda('f')" id="tab-f" class="foda-tab border border-slate-300 font-medium px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    Fortalezas (F)
+                </button>
+                <button onclick="filterFoda('o')" id="tab-o" class="foda-tab border border-slate-300 font-medium px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    Oportunidades (O)
+                </button>
+                <button onclick="filterFoda('d')" id="tab-d" class="foda-tab border border-slate-300 font-medium px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    Debilidades (D)
+                </button>
+                <button onclick="filterFoda('a')" id="tab-a" class="foda-tab border border-slate-300 font-medium px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all">
+                    Amenazas (A)
+                </button>
+            </div>
+
+            <!-- Quadrant Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="foda-grid">
+                
+                <!-- Fortalezas -->
+                <div class="foda-card f-card bg-white border border-emerald-200 p-6 rounded-2xl shadow-sm hover:border-emerald-500 transition-all">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">F</div>
+                        <h3 class="text-xl font-bold text-emerald-900">Fortalezas (Internas)</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-600 font-bold">•</span>
+                            <span>Mejora directa en el rendimiento y vida útil del hardware y software.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-600 font-bold">•</span>
+                            <span>Incremento de la eficiencia y productividad de los usuarios.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-600 font-bold">•</span>
+                            <span>Aplicación práctica de conocimientos técnicos adquiridos en la especialidad.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-600 font-bold">•</span>
+                            <span>Aumento de la longevidad del cómputo con bajos costos iniciales.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Oportunidades -->
+                <div class="foda-card o-card bg-white border border-blue-200 p-6 rounded-2xl shadow-sm hover:border-blue-500 transition-all">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg">O</div>
+                        <h3 class="text-xl font-bold text-blue-900">Oportunidades (Externas)</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>Optimización de recursos aprovechando herramientas de diagnóstico de código abierto.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>Generación de ingresos sostenibles a través de la prestación del servicio.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>Fidelización de clientes mediante atención personalizada y confiable.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 font-bold">•</span>
+                            <span>Creación de entornos digitales seguros e informados.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Debilidades -->
+                <div class="foda-card d-card bg-white border border-amber-200 p-6 rounded-2xl shadow-sm hover:border-amber-500 transition-all">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">D</div>
+                        <h3 class="text-xl font-bold text-amber-900">Debilidades (Internas)</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-600 font-bold">•</span>
+                            <span>Riesgos de desorganización o comunicación interna inicial.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-600 font-bold">•</span>
+                            <span>Necesidad de equipamiento avanzado de medición para casos complejos.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-600 font-bold">•</span>
+                            <span>Limitaciones iniciales en presupuestos para stock amplio de repuestos.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-600 font-bold">•</span>
+                            <span>Riesgo de difusión lenta en las etapas primarias del emprendimiento.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Amenazas -->
+                <div class="foda-card a-card bg-white border border-rose-200 p-6 rounded-2xl shadow-sm hover:border-rose-500 transition-all">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-lg">A</div>
+                        <h3 class="text-xl font-bold text-rose-900">Amenazas (Externas)</h3>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-700">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-600 font-bold">•</span>
+                            <span>Competencia de talleres técnicos tradicionales ya establecidos en la región.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-600 font-bold">•</span>
+                            <span>Costos fluctuantes en repuestos de hardware (RAM, SSD, fuentes).</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-600 font-bold">•</span>
+                            <span>Falta de cultura de mantenimiento preventivo en usuarios locales.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-600 font-bold">•</span>
+                            <span>Imprevistos por daños preexistentes severos en los equipos recibidos.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador / Diagnóstico Interactivo -->
+    <section id="cotizador" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">Simulador Tecnológico 2026</span>
+                <h2 class="font-redaction text-3xl sm:text-4xl font-bold text-navy-900 mb-4">Calculadora de Cotización & Diagnóstico</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-navy-900 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Selecciona las necesidades de tu equipo para obtener un estimado dinámico del servicio Tech Fix.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-6 sm:p-10 rounded-3xl shadow-xl">
+                <form id="quote-form" onsubmit="return false;" class="space-y-6">
+                    
+                    <!-- Tipo de Equipo -->
+                    <div>
+                        <label class="block text-sm font-semibold text-navy-900 mb-3">1. Tipo de Equipo</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="cursor-pointer border border-slate-300 bg-white p-4 rounded-xl flex items-center space-x-3 hover:border-blue-500 transition-all">
+                                <input type="radio" name="device" value="desktop" checked onchange="calculateTotal()" class="accent-blue-600">
+                                <span class="text-sm font-medium text-slate-800"><i class="fa-solid fa-desktop mr-2 text-blue-600"></i>Computador de Escritorio (PC)</span>
+                            </label>
+                            <label class="cursor-pointer border border-slate-300 bg-white p-4 rounded-xl flex items-center space-x-3 hover:border-blue-500 transition-all">
+                                <input type="radio" name="device" value="laptop" onchange="calculateTotal()" class="accent-blue-600">
+                                <span class="text-sm font-medium text-slate-800"><i class="fa-solid fa-laptop mr-2 text-blue-600"></i>Portátil / Laptop</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Servicios -->
+                    <div>
+                        <label class="block text-sm font-semibold text-navy-900 mb-3">2. Servicios Requeridos</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="25000" checked onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Limpieza Física (Hardware)</p>
+                                    <p class="text-slate-500">Soplado, ventiladores y pasta térmica</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="20000" checked onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Optimización de Software</p>
+                                    <p class="text-slate-500">Limpieza de datos basura e inicio</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="18000" onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Eliminación de Virus / Malware</p>
+                                    <p class="text-slate-500">Desinfección de amenazas</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="35000" onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Formateo & Reinstalación</p>
+                                    <p class="text-slate-500">Sistema operativo + controladores</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="15000" onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Copia de Seguridad (Backup)</p>
+                                    <p class="text-slate-500">Resguardo preventivo de archivos</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border border-slate-200 bg-white p-3.5 rounded-xl flex items-center space-x-3 hover:border-slate-400 transition-all">
+                                <input type="checkbox" class="service-item accent-blue-600" data-price="10000" onchange="calculateTotal()">
+                                <div class="text-xs">
+                                    <p class="font-semibold text-slate-900">Cápsula Educativa / Asesoría</p>
+                                    <p class="text-slate-500">Guía práctica de cuidado</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del Precio -->
+                    <div class="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Valor Estimado del Servicio:</span>
+                            <span id="total-price" class="font-redaction text-3xl font-black text-blue-600">$45.000 COP</span>
+                        </div>
+                        <button type="button" onclick="confirmarSolicitud()" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-navy-900 text-white font-bold px-6 py-3.5 rounded-xl hover:opacity-95 transition-all text-sm flex items-center justify-center space-x-2 shadow-md">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Solicitar Diagnóstico</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referencias Bibliográficas -->
+    <section id="creditos" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Ficha del Proyecto -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-redaction text-2xl font-bold text-navy-900 mb-6 flex items-center space-x-3">
+                        <i class="fa-solid fa-school text-blue-600"></i>
+                        <span>Ficha Técnica Institucional</span>
+                    </h3>
+                    <div class="space-y-4 text-sm text-slate-700">
+                        <div class="border-b border-slate-100 pb-3">
+                            <span class="text-slate-400 block text-xs font-semibold uppercase">Equipo Emprendedor</span>
+                            <p class="font-semibold text-navy-900 mt-1">María Paula Romero Rodríguez (Gerente General)</p>
+                            <p class="font-semibold text-navy-900">Maicol Andrés López Rusinque (Subgerente)</p>
+                            <p class="font-semibold text-navy-900">Jhonatan Camilo Marentes Jara (Desarrollador)</p>
+                        </div>
+                        <div class="border-b border-slate-100 pb-3">
+                            <span class="text-slate-400 block text-xs font-semibold uppercase">Docente Encargada</span>
+                            <p class="font-medium text-slate-900 mt-0.5">María Nelly Triana Luna</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="text-slate-400 block text-xs font-semibold uppercase">Institución</span>
+                                <p class="font-medium text-slate-900 mt-0.5">I.E.D. Santa Inés</p>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-xs font-semibold uppercase">Ubicación</span>
+                                <p class="font-medium text-slate-900 mt-0.5">Silvania, Cundinamarca</p>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-xs font-semibold uppercase">Materia / Curso</span>
+                                <p class="font-medium text-slate-900 mt-0.5">Emprendimiento / 1002</p>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-xs font-semibold uppercase">Vigencia</span>
+                                <p class="font-medium text-slate-900 mt-0.5">Año Lectivo 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fuentes Consultadas -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-redaction text-2xl font-bold text-navy-900 mb-6 flex items-center space-x-3">
+                        <i class="fa-solid fa-book-bookmark text-indigo-600"></i>
+                        <span>Referencias Bibliográficas</span>
+                    </h3>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-bookmark text-blue-600 mt-1"></i>
+                            <span><strong>Blanco, J. (2019).</strong> <em>Mantenimiento de equipos informáticos.</em> Editorial Alfaomega.</span>
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-bookmark text-blue-600 mt-1"></i>
+                            <span><strong>González, A., & Pérez, M. (2020).</strong> <em>Gestión del mantenimiento en sistemas informáticos.</em> Ediciones Paraninfo.</span>
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-bookmark text-blue-600 mt-1"></i>
+                            <span><strong>Ríos, M. (2018).</strong> <em>Manual de mantenimiento preventivo y correctivo de hardware.</em> Publicaciones Técnicas.</span>
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-bookmark text-blue-600 mt-1"></i>
+                            <span><strong>Martínez, L., & Torres, C. (2021).</strong> <em>Mantenimiento informático: estrategias y técnicas.</em> Red Inf.</span>
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-bookmark text-blue-600 mt-1"></i>
+                            <span><strong>Cruz, J., & Salinas, R. (2022).</strong> <em>Mantenimiento de equipos electrónicos: teoría y práctica.</em> Tecnologías Aplicadas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Modal -->
+    <div id="custom-modal" class="fixed inset-0 bg-navy-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-redaction text-2xl font-bold text-navy-900 mb-2">¡Cotización Generada!</h3>
+            <p id="modal-message" class="text-sm text-slate-600 leading-relaxed mb-6">
+                Hemos registrado tu requerimiento técnico. El equipo de Tech Fix se pondrá en contacto para agendar la revisión de tu computador.
+            </p>
+            <button onclick="closeModal()" class="bg-blue-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all text-sm w-full">
+                Cerrar Confirmación
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-10 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <p class="font-redaction text-slate-200 text-base font-bold mb-1">TECH FIX</p>
+            <p class="text-slate-300">Institución Educativa Departamental Santa Inés — Silvania, Cundinamarca</p>
+            <p class="mt-2 text-cyan-400 italic">“Seguridad continua, tranquilidad garantizada”</p>
+            <p class="mt-6 text-slate-500 border-t border-slate-800 pt-4">© 2026 Tech Fix — Emprendimiento Grado 1002</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Cotizador Logic
+        function calculateTotal() {
+            let total = 0;
+            const checkboxes = document.querySelectorAll('.service-item');
+            
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += parseInt(cb.getAttribute('data-price'));
+                }
+            });
+
+            // Formatear a pesos colombianos COP
+            const formatted = new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                maximumFractionDigits: 0
+            }).format(total);
+
+            document.getElementById('total-price').innerText = formatted + ' COP';
+            return total;
+        }
+
+        function confirmarSolicitud() {
+            const totalVal = calculateTotal();
+            const modal = document.getElementById('custom-modal');
+            const msg = document.getElementById('modal-message');
+            
+            if (totalVal === 0) {
+                msg.innerText = "Por favor selecciona al menos un servicio técnico para generar tu cotización.";
+            } else {
+                msg.innerText = `Has seleccionado servicios por un valor estimado de ${document.getElementById('total-price').innerText}. El equipo directivo de Tech Fix revisará tu solicitud presencialmente en la I.E.D. Santa Inés.`;
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Interactive FODA Filter
+        function filterFoda(category) {
+            const cards = document.querySelectorAll('.foda-card');
+            const tabs = document.querySelectorAll('.foda-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active-foda-tab'));
+            document.getElementById('tab-' + category).classList.add('active-foda-tab');
+
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    if (card.classList.contains(category + '-card')) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
